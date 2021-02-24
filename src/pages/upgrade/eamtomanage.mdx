@@ -1,0 +1,39 @@
+---
+title: EAM to Manage - Summary
+---
+
+This section discusses a summary of the change. Some of these topics are covered in more detail in this document further down. 
+
+## OVERALL CHANGES TO EAM
+
+**Data:** There are no significant data model changes. Your current EAM database will be upgraded to the Manage 8.0 database.
+
+**Applications:** Changes to authentication and user management. 
+In Maximo 7.6, the authentication is configured in Maximo EAM or application server level (For example, WebSphere ND). In Manage, the authentication is configured at the MAS level. The default protocol used is OpenID Connect (OIDC). A section further down in this document will discuss security changes.
+
+**Certificate Process:** New certificate process to import external certificates.
+
+**Infrastructure:** The deployment is based on Red Hat OpenShift.
+
+## Technology Changes
+
+**OpenShift Operators:** The installation, configuration, deployment, the upgrade is performed by the OpenShift operator.
+
+**Security & User Management:** The authentication and user management is configured in MAS. All users will be synchronized into Manage from MAS.
+
+**Application Server:** WebSphere Liberty will be used as a runtime to run the code in a containerized environment in Red Hat OpenShift. WebSphere ND and WebLogic are not supported. 
+
+**Integration:** RMI is replaced by REST API.
+
+**Message Queue:** If you are using SI Bus, migrate to Kafka or any other supported JMS provider. 
+
+## New Features available
+
+**Modernized User Experience:** New Skin & Navigation
+
+**Mobile:** New Mobile experience 
+
+**Serviceability:** Improved logging options (Elasticsearch, Fluentd & Kibana) & monitoring options (Prometheus & Grafana) 
+
+
+

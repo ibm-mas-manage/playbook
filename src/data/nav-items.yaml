@@ -1,0 +1,106 @@
+- title: Overview
+  pages:
+    - path: /upgrade/overview 
+
+- title: Summary - EAM to Manage
+  pages:
+    - path: /upgrade/eamtomanage     
+  hasDivider: true
+
+- title: Upgrade Prerequisites
+  pages:
+    - path: /upgrade/prerequisites
+     
+- title: Upgrade Process
+  pages:
+    - path: /upgrade/upgradeprocess 
+
+- title: Upgrade Execution
+  pages:
+    - path: /upgrade/upgradeexecution
+    
+- title: Post Upgrade
+  pages:
+      - path: /upgrade/postupgrade
+  hasDivider: true
+
+- title: Deployment Architecture
+  pages:         
+    - path: /upgrade/deployment76
+      title: Maximo 7.6 deployment
+
+    - path: /upgrade/deploymentocp
+      title: Manage on Openshift 
+ 
+- title: Deployment Model
+  pages:
+    - path: /upgrade/deployment
+  hasDivider: true
+  
+- title: EAM to Manage Considerations
+  pages:
+    - path: /upgrade/planning/overview
+      title: Overview
+ 
+    - path: /upgrade/planning/security
+      title: Security & User Management   
+ 
+    - path: /upgrade/planning/integration
+      title: Integration
+
+    - path: /upgrade/planning/properties
+      title: Maximo Properties
+
+    - path: /upgrade/planning/functionalareas
+      title: Functional Area
+      
+    - path: /upgrade/planning/license
+      title: License
+ 
+    - path: /upgrade/planning/logging
+      title: Logging
+
+    - path: /upgrade/planning/monitoring
+      title: Monitoring
+
+    - path: /upgrade/planning/tools
+      title: Run Manage Tools
+
+   
+- title: User Synchronization
+  pages:
+   - path: /upgrade/usersync
+
+- title: LDAP User Synchronization
+  pages:	
+    - path: /upgrade/ldapsync
+
+- title: Configuration
+  pages:
+     - path: /upgrade/configuration
+       title: Configuration
+
+- title: Customization
+  pages:
+     - path: /upgrade/customization
+       title: Customization Archive
+     - path: /upgrade/customizationprocess
+       title: Customization Process
+
+  
+- title: Capacity Planning
+  pages:
+    - path: /upgrade/capacityplanning
+  hasDivider: true
+  
+- title: Additional Useful Information
+  pages:
+    - path: /upgrade/usefulinformation
+
+- title: Useful Links
+  pages:
+    - path: /upgrade/usefullinks
+
+   
+
+       

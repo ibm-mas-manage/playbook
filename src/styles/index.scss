@@ -1,0 +1,577 @@
+// ----------------------------
+// Our local component imports
+// ----------------------------
+// TBD
+
+// ----------------------------
+// Local styles/overrides for the site
+// ----------------------------
+
+
+// $wiot-gradient: linear-gradient(45deg, $carbon--purple-40, $carbon--blue-50);
+$wiot-gradient: linear-gradient(45deg, $carbon--green-40, $carbon--blue-50);
+
+div[class*='bx--row'] {
+  margin-top: 0 !important;
+}
+
+
+//.container .bx--row .bx--row {
+//  margin-left: 0 !important;
+//  margin-right: 0 !important;
+//  margin-top: 0 !important;
+//}
+
+
+
+@media (min-width: 66rem) {
+  .container .bx--grid {
+    padding-left: calc(256px + 2rem);
+    padding-right: 2rem;
+  }
+}
+
+// Sort out the horrible white space at top and bottom of the pages
+div[class*='Main-module--padded'] {
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+}
+
+//div[class*='EditLink-module--row'] {
+ // top: 4em;
+//}
+
+
+// Why are blockquotes made huge text, who came up with this theme!?
+blockquote[class*='Markdown-module--blockquote'] {
+  font-size: 1rem !important;
+  border-left: 5px #0064fd solid;
+  margin-right: 5rem; // give some balance to the blockquote
+
+  div:not(:first-child)[class*='bx--row'] {
+    margin-top: 1rem;
+  }
+
+  p {
+    font-size: 1rem !important;
+    text-indent: 0 !important;
+    color: #353535 !important;
+    line-height: 140% !important;
+  }
+
+  p::before {
+    content: none !important;
+  }
+
+  p::after {
+    content: none !important;
+  }
+}
+
+// OMG tables are fugly, no styling at all in the default theme!
+// #161616 -- slightly offblack used by the nav
+// #353535 -- lighter black used by nave for selected item
+// #E0E0E0 -- light gray used in tab header
+div[class*='page-table__container'] {
+  // Pad this the same as everything else so it's aligned properly
+  // and tag it important so that the overall table padding setting doesn't override it
+  padding-left: 1rem !important;
+}
+
+div[class*='Main-module--main'] {
+  div[class*='bx--row'] {
+    margin-top: 1rem;
+  }
+
+  pre {
+    margin-top: 0;
+
+    div[class*='Code-module--row'] {
+      margin-top: 1rem;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Tabs, override default black tab color
+// ----------------------------------------------------------------------------
+div[class*='PageTabs-module--tabs-container'] {
+  background: $carbon--gray-10;
+  border-bottom: 1px solid $carbon--gray-20;
+
+  li[class*='PageTabs-module--list-item'] {
+    a[class*='PageTabs-module--link'] {
+      color: $carbon--gray-100;
+      height: auto;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      font-size: 0.9rem;
+
+      //&:hover {
+      //  background: $carbon--gray-20;
+      //  color: $carbon--gray-100;
+      //}
+    }
+  }
+
+  li[class*='PageTabs-module--selected-item'] a {
+    background: $carbon--gray-20;
+  }
+}
+
+// Fix the homepage lists
+main[class*='container--dark'] {
+  ul[class*='Markdown-module--list'] {
+    li[class*='Markdown-module--list-item'] {
+      color: #161616 !important;
+    }
+  }
+}
+
+// Stop the acordian losing 33% of page width
+div[class*='bx--col-lg-8'] {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+// ----------------------------------------------------------------------------
+// Headings
+// - Stop headings losing 33% of the screen
+// - Reduce Font Size
+// ----------------------------------------------------------------------------
+
+// Page header gradient, page tabs
+div[class*='PageHeader-module--page-header'] {
+  background: $wiot-gradient;
+  height: auto; // override fixed height so gradient height does not change between tabbed and non-tabbed pages
+  border-bottom: none; // override black border from theme
+
+  h1[class*='PageHeader-module--text'] {
+    padding-top: 1rem; // explicitly set the height of the gradient header
+    margin-bottom: 1rem; // explicitly set the height of the gradient header
+    font-size: 2.5rem;
+  }
+}
+
+div[class*='Main-module--main'] {
+  h1:first-child[class*='Markdown-module--h1'],
+  h2:first-child[class*='Markdown-module--h2'] {
+    margin-top: 0 !important;
+  }
+
+  h1[class*='Markdown-module--h1'] {
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+    width: 100% !important;
+    font-size: 1.8rem;
+    line-height: 1.25rem;
+  }
+
+  h2[class*='Markdown-module--h2'] {
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+    width: 100% !important;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  h3[class*='Markdown-module--h3'] {
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+    width: 100% !important;
+    font-size: 1.2rem;
+  }
+
+  h4[class*='Markdown-module--h4'] {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    width: 100% !important;
+    font-size: 1rem;
+  }
+}
+
+// Stop inline losing 1/3rd of screen too
+div[class*='InlineNotification-module--notification'] {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 1 auto !important;
+  margin-bottom: 1rem !important;
+
+  div[class*='bx--inline-notification__details'] {
+    div[class*='bx--inline-notification__text-wrapper'] {
+      padding: 0.9375rem 0 0 0;
+    }
+  }
+}
+
+div[class*='bx--inline-notification__subtitle'] {
+  div:not(:first-child)[class*='bx--row'] {
+    margin-top: 1rem;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Ordered and Unordered Lists
+// - Stop lists losing 33% of screen
+// - Use proper markers for lists
+// - Fix the font size
+// ----------------------------------------------------------------------------
+
+ul[class*='contains-task-list'] {
+  margin-top: 0;
+  margin-bottom: 1rem !important;
+  width: 100% !important;
+  list-style-type: none;
+
+  li[class*='task-list-item'] {
+    font-size: 0.9rem !important;
+    padding-left:0;
+    line-height: 1.25rem;
+
+    // Don't add the margin if it's a list inside a list
+    ul[class*='Markdown-module--list'],
+    ol[class*='Markdown-module--list'] {
+      margin-bottom: 0 !important;
+    }
+  }
+
+}
+
+ul[class*='Markdown-module--list'],
+ol[class*='Markdown-module--list'] {
+  margin-top: 0;
+  margin-bottom: 1rem !important;
+  width: 100% !important;
+  list-style-type: disc;
+
+  li[class*='Markdown-module--list-item'] {
+    font-size: 0.9rem !important;
+    padding-left:0;
+    line-height: 1.25rem;
+
+    // Don't add the margin if it's a list inside a list
+    ul[class*='Markdown-module--list'],
+    ol[class*='Markdown-module--list'] {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  li::before, li::marker {
+    content: none !important;
+  }
+}
+
+ul[class*='bx--list--nested'],
+ol[class*='bx--list--nested'] {
+  margin-left: 0;
+}
+
+
+// ----------------------------------------------------------------------------
+// Paragraphs
+// - Stop paragraphs losing 33% of the screen
+// ----------------------------------------------------------------------------
+// Can we shrink all the fonts
+p[class*='Markdown-module--paragraph'] {
+  font-size: 0.9rem !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.25rem !important;
+}
+p[class*='Markdown-module--paragraph--responsive'] {
+  width: 100% !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.25rem !important;
+}
+
+p[class*='list-item'] {
+  margin-bottom: 1rem;
+}
+
+// ----------------------------------------------------------------------------
+// Inline code
+// ----------------------------------------------------------------------------
+code{
+  background-color: rgba(27,31,35,.05);
+  //color: $carbon--gray-100;
+  letter-spacing: 0;
+  padding: .2em .4em;
+  font-size: 85%;
+}
+
+
+// ----------------------------------------------------------------------------
+// Tables
+// ----------------------------------------------------------------------------
+
+table[class*='page-table'] {
+  border: 1px solid #e0e0e0;
+
+  // Reset the width mangling in the theme
+  min-width: 0;
+  width: auto;
+
+  margin-bottom: 1rem;
+
+  // General tables
+  th {
+    background-color: #353535;
+    color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem 0.5rem;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  td {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem 0.5rem;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  // Table styles for capability matrix
+  th {
+    div[class='capabilityMatrixHeader'] {
+      transform: 
+      /* Magic Numbers */ translate(110px, 2rem)
+        /* 45 is really 360 - 45 */ rotate(270deg);
+      text-orientation: mixed;
+      height: 15rem;
+      width: 1rem;
+    }
+  }
+  th[class*='app-name'] {
+    text-align: center;
+    width: 70px;
+    margin-left: 5000px;
+    font-size: 13px;
+  }
+  th[class*='requirements'] {
+    width: 240px;
+    font-size: 14.5px;
+  }
+  td[class*='supported'] {
+    background-color: #008000;
+    font-size: 90%;
+    font-weight: bold;
+  }
+  td[class*='unsupported'] {
+    background-color: #c00000;
+    font-size: 90%;
+    font-weight: bold;
+  }
+  td[class*='planned'] {
+    background-color: #eec50d;
+    font-size: 90%;
+    font-weight: bold;
+    text-align: center;
+  }
+  td[class*='unknown'] {
+    background-color: #6a5c5c;
+    font-size: 90%;
+    font-weight: bold;
+  }
+  td[class*='breakline'] {
+    background-color: #353535;
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem 0.5rem;
+    height: 30px;
+  }
+}
+
+
+// ----------------------------------------------------------------------------
+// Accordians
+// ----------------------------------------------------------------------------
+p[class*='accordion-breakline'] {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+ul[class*='bx--accordion'] {
+  width: auto;
+  margin: 0 0 0 1rem;
+
+  li[class*='bx--accordion__item--active'] {
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+
+    button[class*='bx--accordion__heading'] {
+      background-color: #e0e0e0;
+    }
+  }
+}
+
+//div[class*='bx--accordion__content'] {
+//  border-left: 1px solid #000;
+//}
+
+// ----------------------------------------------------------------------------
+// Images
+// - Stop left aligning images
+// ----------------------------------------------------------------------------
+span[class*='gatsby-resp-image-wrapper'] {
+  margin-left: auto !important;
+}
+
+// ----------------------------------------------------------------------------
+// Code Snippets
+// - Fix the horrible formatting of code blocks
+// ----------------------------------------------------------------------------
+div[class*='Code-module--row'] {
+  width: 100%;
+  font-size: 0.7rem !important;
+  line-height: 1.25rem;
+  letter-spacing: 0px;
+  margin-bottom: 1rem;
+
+  div[class*='Code-module--container'] {
+    pre[class*='Code-module--highlight'] {
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+      background-color: rgb(62, 62, 62) !important;
+    }
+    div[class*='Code-module--sidebar'] {
+      background: none;
+    }
+  }
+
+
+  div[class*='Code-module--path-row'] {
+    margin-left: 1rem;
+  }
+
+  div[class*='Code-module--container'] {
+    margin-left: 1rem;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Footer
+// ----------------------------------------------------------------------------
+div[class*='NextPrevious-module--link-container'] {
+  height: auto;
+
+  div[class*='Grid-module--column'] {
+    div[class*='NextPrevious-module--name'] {
+      font-size:1rem;
+    }
+  }
+}
+
+// Container overrides
+.container {
+  // proper colors to follow gray10 theme
+  color: $carbon--gray-100;
+  background: $carbon--gray-10;
+
+  &--homepage {
+    color: $carbon--gray-100;
+    background: $carbon--gray-10;
+
+    .banner-text-blurb {
+      position: absolute;
+      top: 1rem;
+      color: white;
+      z-index: 1;
+
+      @include carbon--breakpoint('md') {
+        width: 45%;
+        padding-right: 1rem;
+      }
+
+      @include carbon--breakpoint('lg') {
+        width: 30%;
+        padding-right: 0;
+      }
+
+      @include carbon--breakpoint('xlg') {
+        width: 23rem;
+        padding-right: 0;
+      }
+    }
+
+    .banner-wordmark {
+      width: calc(10vh + 8vw); // ensure wordmark does not overlap banner text
+    }
+
+    // Homepage banner overrides for gradient overlay
+    div[class*='Banner-module--grid'] {
+      position: relative;
+
+      @media screen and (max-height: 800px) {
+        height: calc(1200px - 100vh);
+
+        // cancel out .container's 3rem top margin for nav bar
+        max-height: calc(100vh - 3rem);
+      }
+    }
+
+    div[class*='Banner-module--column'] {
+      img {
+        z-index: 1;
+      }
+
+      &::after {
+        background: $wiot-gradient;
+        bottom: 0;
+        content: '';
+        left: 0;
+        opacity: 0.9;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        @include carbon--breakpoint('md') {
+          right: 50%;
+        }
+
+        @include carbon--breakpoint('lg') {
+          //128 is to cancel out the left nav, overlay is 50% of displayed image
+          right: calc(50% - 128px);
+        }
+
+        @include carbon--breakpoint('xlg') {
+          right: calc(-53rem + 100vw);
+        }
+      }
+    }
+  }
+}
+
+// override white color text on hover in homepage left nav items
+li[class*='LeftNav-module--link-text__homepage']:hover
+  .bx--side-nav__link-text {
+  color: $carbon--gray-100 !important;
+}
+
+// article cards that hold longform content need the aspect ratio styles
+// unset so their containers can grow to contain the content instead of
+// it overflowing.
+.unset-card-aspect-ratio {
+  .bx--aspect-ratio {
+    padding: unset;
+    height: unset;
+  }
+
+  .bx--aspect-ratio--object {
+    position: initial;
+  }
+}
+
+// 404 page overrides
+div[class*='FourOhFour-module--container'] {
+  margin-top: 3rem;
+  padding-top: 3rem;
+
+  // big 404 gradient overlay
+  span[class*='FourOhFour-module--four-oh-four'] {
+    background: $wiot-gradient;
+    background-clip: text;
+    background-size: 200% 200%;
+  }
+
+  // override white link color
+  [class*='FourOhFour-module--link'] {
+    color: inherit;
+  }
+}

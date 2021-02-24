@@ -1,0 +1,38 @@
+---
+title: Logging
+---           
+
+## Manage Server Logs
+- Manage server logs are written to the standard output. You can view the logs from the OpenShift console. 
+  - From the OpenShift console, go to the Workloads/Pods menu, select the pod for your project. Select the Logs tab to view logs.
+  - You can use "Kubectl" commands to view logs from a terminal.
+<p></p>
+- You can also configure MAS supported log configuration by OpenShift. For example, Elasticsearch, Fluentd, and Kibana dashboard (EFK) can be configured for Logging. The logs automatically flow to the EFK stack.
+  - Aggregated Manage logs can be retrieved from the EFK stack.
+<p></p>
+- You can also push the logs to Cloud Object Storage(COS) by following the steps below:
+  - Setup: 
+    - Set up an S3 account.
+    - Create the following four environment variables in your Manage deployment:
+      - LOG_BUCKETNAME
+      - LOG_S3ACCESSKEY
+      - LOG_S3ENDPOINTURL
+        - For example: https://s3.us.cloud.object.storage.appdomain.cloud
+      - LOG_S3SECRETKEY
+  - Create a log request(POST) using any HTTP Rest Client. For example, the Postman tool.
+    - Request URL: http://manageserver:7001/maximo/oslc/service/logging?action=wsmethd:submitUploadRequest
+      - Replace the manageserver in the above URL to your manage server host or IP address.
+      - A record will be created in the Manage table(LOGREQUEST)
+   - Each  Manage server handles the latest log request. It will zip the logs in the liberty log directory and upload it in COS. 
+   - You can use the S3 browser to view the logs using your S3 account credentials.
+   - The logs can be downloaded from the Liberty server. It will be in the directory that is set for the system property "server.output.dir".
+     - For example, "/opt/was/libert/wip/usr/servers/default/
+     - A record will be created in the Manage table (LOGREQUESTDET)
+     - The Manage table records will be removed by cron task (LOGREQUESTCLEANUP) after posting logs to COS.
+       - The cron task needs to be activated manually. It will run once every day.
+   
+
+## Maxinst/Update Database Logs
+- The maxinst and update database logs can be retrieved from the admin console pod.
+  - From the OpenShift console, go to the Workloads/Pods menu, select the maxinst pod for your project. Go to terminal tab and cd "/opt/IBM/SMP/maximo/tools/log/"  directory to view logs. 
+    

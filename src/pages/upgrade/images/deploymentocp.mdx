@@ -1,0 +1,41 @@
+---
+title: Manage Deployment in OpenShift
+---           
+
+The following architectural diagram shows a sample Manage application deployment in MAS/OpenShift Container Platform (OCP). The Maximo 7.6 deployment is replaced by following Manage deployment in MAS in OCP. 
+
+![image](images/deploymentocp.png)
+
+<p></p>
+
+## Key Elements of the Architecture
+
+- **OpenShift:** The OpenShift contains the Infrastructure layer, Red Hat Enterprise Linux operating system, Kubernetes software for deploying and managing containers, and internal Image Registry to store Manage configured images and services. Manage dashboards are provided in the OpenShift Layer to view Logging and Monitoring of Manage, and other apps deployed in Maximo Application Suite. 
+- **Images:** The images for the Manage Operator, Manage Base, Industry Solutions, and Add-ons are provided in the Entitled Registry. These images contain software application classes, deployment descriptors, XML, and scripts. 
+- **Manage Operator:** The Manage operator pulls the images from the Entitled Registry. It is similar to how we get the software from the Passport Advantage and IFIX Central to install it on the admin workstation. You can think of it as a replacement for the installer.
+- **Manage Workloads(Server Bundles):** The Manage supports five workloads (All, UI, Cron, Report, MEA) that can be configured during the application deployment. In this example, UI, Cron, Report, and MEA workloads are deployed.
+- **Customization Archive:** The customization archive is stored in the customer repository that can access from MAS using HTTPS.  
+- **Admin Command Processor:** The Admin Command processor pod is deployed and is used for running Manage tools like integrity checker.
+- **Other Maximo Application Suite Apps:** There are other applications available in the suite that can be deployed. For example, Health, Predict, Assist, Monitor, etc.
+- **Manage Database:** The Manage database can be deployed in a cluster. For example, DB2 warehouse.
+- **Manage Object Storage:** The Cloud Object Storage can be configured for document storage. For example, doclinks can use object storage for storing documents, etc. 
+- **Manage MQ/Kafka:** The messaging provider such as JMS MQ or Kafka can be set up and configured in a cluster.
+
+## Process
+- When the application is deployed, the Manage operator pulls the images from the Entitled Registry, and customization archive from the customer repository if any customization exists and builds a runnable Manage Admin image, and configured images/workloads (UI, Cron, BIRT Reporting).
+- The configured images/workloads are deployed to the containers in MAS. 
+- The built images are stored in the OpenShift Internal Image Registry repository. 
+
+
+The following architectural diagram shows the Manage deployment via operator.
+
+![image](images/deploymentoperator.png)
+
+<p></p>
+
+  
+- **Create Custom Resource(CR):** An admin selects, configures, and deploys the Manage application. The deployment creates a Custom Resource (CR). A CR contains a user-entered configuration for the application. For example, name, version, number of pods, and DB type and connection, type of workloads, location of customization archive, etc. 
+
+- **Create Image:** The Manage operator gets images from the Entitled Registry and the customization archive (if exists) from the customer repository based on the information in the CR. The operator lays down the Industry Solutions/Add-on images and the customization archive over the Manage Base image to create the final images. It also validates against the dependency matrix. It creates a runnable Manage Admin image and the Manage configured images(workloads). The final images are stored in the Image Registry repository. 
+
+- **Update Configuration:** The Manage Admin image installs (if the Manage database does not exist) or upgrades the Manage database for a new configuration, tears down and, re-spawns the Manage deployments.  Manage configured images (workloads) gets deployed to containers in MAS.
