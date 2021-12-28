@@ -1,9 +1,0 @@
-// This file can be used to inject global imports into the theme bundle
-
-// Don't place site styles here, use `./src/styles/index.scss` instead
-
-//DNA-Override for not displaying application switcher.
-button[class^='Header-module--switcher-button'], button[class*=' Header-module--switcher-button']
-{
-  display:none;
-}
